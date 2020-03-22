@@ -19,5 +19,3 @@ def get_covid(chk):
             ans += tr.find_all("td")[1].get_text() + "/"
             ans += tr.find_all("td")[2].get_text() + "\n"
     return ans
-
-print(get_covid(False))
