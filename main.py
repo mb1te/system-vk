@@ -1,9 +1,9 @@
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import random
-from yamaps import *
+from covid19 import *
 
-vk_session = vk_api.VkApi(token=TOKEN)
+vk_session = vk_api.VkApi(token='95828ed40c8fa5afcc922fd9e004e7a4ae4d32647fcdd59ebf7ff66f778a921a760bde7808262df480a32')
 vk = vk_session.get_api()
 longpoll = VkBotLongPoll(vk_session, '171143945') #id группы
 
