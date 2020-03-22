@@ -2,6 +2,9 @@ import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import random
 from covid19 import *
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
 
 vk_session = vk_api.VkApi(token=TOKEN)
 vk = vk_session.get_api()
