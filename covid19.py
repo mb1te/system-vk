@@ -8,8 +8,10 @@ def get_covid(chk):
     for div in b.find_all("div", { "class" : "cv-countdown__item" }):
         for item in div.find_all("div"):
             #print(item)
-            ans += item.get_text() + " "
+            ans += " ".join([i for i in item.get_text().split()])
         ans += "\n"
+    ans = ans.replace("Случая", " случая")
+    ans = ans.replace("Чел", " чел")
     if (chk):
         ans += "\n"
         ans += b.find_all("a", { "class" : "d-open-map" })[0].get_text() + " по регионам (Заразилось/Выздоровело/Умерло)\n"
@@ -19,3 +21,5 @@ def get_covid(chk):
             ans += tr.find_all("td")[1].get_text() + "/"
             ans += tr.find_all("td")[2].get_text() + "\n"
     return ans
+
+print(get_covid(False))
