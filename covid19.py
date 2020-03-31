@@ -10,7 +10,7 @@ def get_covid(chk):
             #print(item)
             ans += " ".join([i for i in item.get_text().split()])
         ans += "\n"
-    ans = ans.replace("Случая", " случая")
+    ans = ans.replace("Случ", " случ")
     ans = ans.replace("Чел", " чел")
     if (chk):
         ans += "\n"

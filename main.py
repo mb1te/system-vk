@@ -15,7 +15,7 @@ def send_message(chat_id, text):
 
 for event in longpoll.listen():
     if (event.type == VkBotEventType.MESSAGE_NEW):
-        if (event.obj.text == 'covid инфа'):
+        if (event.obj.text.lower() == 'covid инфа'):
             send_message(event.chat_id, get_covid(False))
-        if (event.obj.text == 'covid инфа детально'):
+        if (event.obj.text.lower() == 'covid инфа детально'):
             send_message(event.chat_id, get_covid(True))
