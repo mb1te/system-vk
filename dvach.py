@@ -1,9 +1,23 @@
 import requests
 import bs4
+import random
 
-def get_covid(chk):
-    r = requests.get('https://стопкоронавирус.рф/#')
+def get_dvach(chk):
+    r = requests.get('https://2ch.hk/b/')
     b = bs4.BeautifulSoup(r.text, features='lxml')
+    ans = []
+    for div in b.find_all("div", { "class" : "thread" }):
+        cur = ""
+        arr = div.find_all("article")
+        cur += arr[0].get_text()
+        print(arr)
+        if chk:
+            for i in range(1, len(arr)):
+                cur += arr[i].get_text()
+        ans.append(cur)
+    return ans[random.randint(0, len(ans) - 1)]
+                
+    '''
     ans = b.find_all("h2", { "class" : "cv-section__title" })[0].get_text().replace("данные", " данные").replace("По", "по") + "\n"
     for div in b.find_all("div", { "class" : "cv-countdown__item" }):
         for item in div.find_all("div"):
@@ -21,5 +35,6 @@ def get_covid(chk):
             ans += tr.find_all("td")[1].get_text() + "/"
             ans += tr.find_all("td")[2].get_text() + "\n"
     return ans
+    '''
 
-#print(get_covid(False))
+#print(get_dvach(False))
