@@ -9,11 +9,11 @@ def get_dvach(chk):
     for div in b.find_all("div", { "class" : "thread" }):
         cur = ""
         arr = div.find_all("article")
-        cur += arr[0].get_text()
-        print(arr)
+        cur += arr[0].get_text(separator=u"<br/>").replace("<br/>", "\n")
+        #print(arr)
         if chk:
             for i in range(1, len(arr)):
-                cur += arr[i].get_text()
+                cur += arr[i].get_text(separator=u"<br/>").replace("<br/>", "\n")
         ans.append(cur)
     return ans[random.randint(0, len(ans) - 1)]
                 
